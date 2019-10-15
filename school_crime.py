@@ -17,7 +17,7 @@ except BaseException as error:
     sys.exit(1)
 
 #Only count schools where the "No Crim N" column is not 0
-df_filtered = df.where( df["NoCrim N"] > 0 )
+df_filtered = df.where( df["Major N"] = 0 )
 
 #d is a dictionary containing 5 keys and 5 values.
 #Each key is a one-character string, and each value is an int.
