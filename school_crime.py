@@ -17,11 +17,11 @@ except BaseException as error:
     sys.exit(1)
 
 #Only count schools where the "No Crim N" column is not 0
-df_filtered = df.where( df["Major N"] = 0 )
+mask = df["Major N"] = 0
 
 #d is a dictionary containing 5 keys and 5 values.
 #Each key is a one-character string, and each value is an int.
-d = collections.Counter(df_filtered["Borough"])
+d = collections.Counter(df[mask]["Borough"])
 
 newNames = {
     "K": "Brooklyn",
@@ -39,7 +39,6 @@ print("""\
 2017 - 2018 Schools NYPD Crime Data Report
 Source:
 https://data.cityofnewyork.us/Education/2017-2018-Schools-NYPD-Crime-Data-Report/kwvk-z7i9/data
-
 Counts by Borough
 """)
 
